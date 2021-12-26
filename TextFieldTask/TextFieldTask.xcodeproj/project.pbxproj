@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< Updated upstream:TextFieldTask/TextFieldTask.xcodeproj/project.pbxproj
 		041FF3CA27789BF300D96873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FF3C927789BF300D96873 /* AppDelegate.swift */; };
 		041FF3CC27789BF300D96873 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FF3CB27789BF300D96873 /* SceneDelegate.swift */; };
 		041FF3CE27789BF300D96873 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FF3CD27789BF300D96873 /* ViewController.swift */; };
@@ -27,27 +26,6 @@
 		041FF3D527789BF900D96873 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041FF3D727789BF900D96873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041FF3DD27789C5500D96873 /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
-=======
-		041FF3EC27789DB900D96873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FF3EB27789DB900D96873 /* AppDelegate.swift */; };
-		041FF3EE27789DB900D96873 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FF3ED27789DB900D96873 /* SceneDelegate.swift */; };
-		041FF3F027789DB900D96873 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FF3EF27789DB900D96873 /* ViewController.swift */; };
-		041FF3F327789DB900D96873 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041FF3F127789DB900D96873 /* Main.storyboard */; };
-		041FF3F527789DBD00D96873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041FF3F427789DBD00D96873 /* Assets.xcassets */; };
-		041FF3F827789DBD00D96873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041FF3F627789DBD00D96873 /* LaunchScreen.storyboard */; };
-		041FF4002778BE7300D96873 /* CalculatorProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041FF3FF2778BE7300D96873 /* CalculatorProcess.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		041FF3E827789DB900D96873 /* CalclulatorSwiftProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalclulatorSwiftProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		041FF3EB27789DB900D96873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		041FF3ED27789DB900D96873 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		041FF3EF27789DB900D96873 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		041FF3F227789DB900D96873 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		041FF3F427789DBD00D96873 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		041FF3F727789DBD00D96873 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		041FF3F927789DBD00D96873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		041FF3FF2778BE7300D96873 /* CalculatorProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorProcess.swift; sourceTree = "<group>"; };
->>>>>>> Stashed changes:CalclulatorSwiftProject/CalclulatorSwiftProject.xcodeproj/project.pbxproj
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +58,6 @@
 		041FF3C827789BF300D96873 /* TextFieldTask */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< Updated upstream:TextFieldTask/TextFieldTask.xcodeproj/project.pbxproj
 				041FF3C927789BF300D96873 /* AppDelegate.swift */,
 				041FF3CB27789BF300D96873 /* SceneDelegate.swift */,
 				041FF3CD27789BF300D96873 /* ViewController.swift */,
@@ -89,16 +66,6 @@
 				041FF3D227789BF900D96873 /* Assets.xcassets */,
 				041FF3D427789BF900D96873 /* LaunchScreen.storyboard */,
 				041FF3D727789BF900D96873 /* Info.plist */,
-=======
-				041FF3EB27789DB900D96873 /* AppDelegate.swift */,
-				041FF3ED27789DB900D96873 /* SceneDelegate.swift */,
-				041FF3EF27789DB900D96873 /* ViewController.swift */,
-				041FF3FF2778BE7300D96873 /* CalculatorProcess.swift */,
-				041FF3F127789DB900D96873 /* Main.storyboard */,
-				041FF3F427789DBD00D96873 /* Assets.xcassets */,
-				041FF3F627789DBD00D96873 /* LaunchScreen.storyboard */,
-				041FF3F927789DBD00D96873 /* Info.plist */,
->>>>>>> Stashed changes:CalclulatorSwiftProject/CalclulatorSwiftProject.xcodeproj/project.pbxproj
 			);
 			path = TextFieldTask;
 			sourceTree = "<group>";
@@ -173,17 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< Updated upstream:TextFieldTask/TextFieldTask.xcodeproj/project.pbxproj
 				041FF3CE27789BF300D96873 /* ViewController.swift in Sources */,
 				041FF3CA27789BF300D96873 /* AppDelegate.swift in Sources */,
 				041FF3DE27789C5500D96873 /* CustomTextFieldStyle.swift in Sources */,
 				041FF3CC27789BF300D96873 /* SceneDelegate.swift in Sources */,
-=======
-				041FF3F027789DB900D96873 /* ViewController.swift in Sources */,
-				041FF3EC27789DB900D96873 /* AppDelegate.swift in Sources */,
-				041FF3EE27789DB900D96873 /* SceneDelegate.swift in Sources */,
-				041FF4002778BE7300D96873 /* CalculatorProcess.swift in Sources */,
->>>>>>> Stashed changes:CalclulatorSwiftProject/CalclulatorSwiftProject.xcodeproj/project.pbxproj
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
