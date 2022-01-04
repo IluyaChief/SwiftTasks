@@ -3,74 +3,44 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var result: UILabel!
-    var numberOfDouble: Double = 0
-    var firstNumber: Double = 0
-    var operation: Int = 0
-    var MathSign: Bool = false
+    @IBOutlet weak var resultLabel: UILabel!
     
+    var calculatorFunction = CalculatorLogic()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    @IBAction func Digits(_ sender: UIButton) {
-        if MathSign == true {
-            result.text = String(sender.tag)
-            MathSign = false
-        }
-        else {
-            result.text = result.text! + String(sender.tag)
-        }
-        numberOfDouble = Double(result.text!)!
+    @IBAction func percentTapButton(_ sender: UIButton) {
+        resultLabel.text = calculatorFunction.tappedPercent(resultLabel.text ?? "")
     }
     
-
-    @IBAction func buttonAnyFunction(_ sender: UIButton) {
-        if result.text != "" && sender.tag != 10 && sender.tag != 17 && result.text != "/" && result.text != "x" && result.text != "-" && result.text != "+" {
-                firstNumber = Double(result.text!)!
-                
-            
-            if sender.tag == 13 {
-                    result.text = "/"
-                }
-                else if sender.tag == 14 {
-                    result.text = "*"
-                }
-                else if sender.tag == 15 {
-                    result.text = "-"
-                }
-                else if sender.tag == 16 {
-                    result.text = "+"
-                }
-
-
-            operation = sender.tag
-            MathSign = true
-            
+    @IBAction func pointTappedButton(_ sender: UIButton) {
+        resultLabel.text = calculatorFunction.tappedPoint()
+    }
+    
+    @IBAction func userPressedButton(_ sender: UIButton) {
+        guard let number = sender.currentTitle else { return }
+        resultLabel.text = calculatorFunction.tappedDigits(number)
+    }
+    
+    @IBAction func clearTappedButton(_ sender: UIButton) {
+        resultLabel.text = calculatorFunction.clearTapped()
+    }
+    
+    @IBAction func userTapSignButton(_ sender: UIButton) {
+        guard let sign = sender.currentTitle else { return }
+        resultLabel.text = calculatorFunction.tappedMathSign(sign)
+    }
+    
+    @IBAction func userTapEqualButton(_ sender: UIButton) {
+        resultLabel.text = calculatorFunction.tappedEqual()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+            super.viewWillTransition(to: size, with: coordinator)
+            if UIDevice.current.orientation.isLandscape {
+                resultLabel.font = UIFont.systemFont(ofSize: 60)
+                resultLabel.textColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            } else {
+                resultLabel.font = UIFont.systemFont(ofSize: 40)
+                resultLabel.textColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+            }
         }
-        else if sender.tag == 17 {
-                    if operation == 13 {
-                        result.text = String(firstNumber / numberOfDouble)
-                    }
-                    if operation == 14 {
-                        result.text = String(firstNumber * numberOfDouble)
-                    }
-                    if operation == 15 {
-                        result.text = String(firstNumber - numberOfDouble)
-                    }
-                    if operation == 16 {
-                        result.text = String(firstNumber + numberOfDouble)
-                    }
-                    if operation == 11 {
-                        result.text = String(firstNumber.truncatingRemainder(dividingBy: numberOfDouble))
-            }
-                }
-                else if sender.tag == 10 {
-                    result.text = ""
-                    firstNumber = 0
-                    numberOfDouble = 0
-                    operation = 0
-                }
-            }
     }
