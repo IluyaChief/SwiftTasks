@@ -1,59 +1,16 @@
 import UIKit
 
-class ViewController: UIViewController {
-   @objc dynamic let lessonLabel : UILabel = {
-        let label = UILabel()
-        label.text = "Timer of training KVC and KVO"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .black
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+class ViewController: UIViewController, ControlSetupProtocol {
     
-    let timerLabel : UILabel = {
-        let label = UILabel()
-        label.text = "10"
-        label.font = UIFont.boldSystemFont(ofSize: 80)
-        label.textColor = .black
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let shapeView: UIImageView = {
-      let imageView = UIImageView()
-        imageView.image = UIImage(named: "elipse")
-        imageView.layer.cornerRadius = 30
-        imageView.layer.shadowRadius = 5
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    let startButton : UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 20
-        button.setTitle("Start", for: .normal)
-        button.backgroundColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    let changeButton : UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 20
-        button.setTitle("Plus 10", for: .normal)
-        button.backgroundColor = .black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    var timer = Timer()
+    @objc  let lessonLabel = UILabel()
+    private let timerLabel = UILabel()
+    private let shapeView = UIImageView()
+    private let startButton = UIButton()
+    private  let changeButton = UIButton()
+    private var timer = Timer()
+    private let shapeLayer = CAShapeLayer()
     @objc dynamic var durationTimer = 10
-    let shapeLayer = CAShapeLayer()
-    let colors = [UIColor.red, UIColor.green, UIColor.blue, UIColor.yellow, UIColor.darkGray, UIColor.orange]
+    private let colors = Const.colorArray
     var nameObservationToken :NSKeyValueObservation?
     
     override func viewDidLayoutSubviews() {
@@ -63,19 +20,81 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setConstraints()
-        nameObservationToken = observe(\ViewController.durationTimer, options: [.new]) { strongself, change in
+        controlSetup()
+    }
+    
+    func setupSubview() {
+        view.addSubview(lessonLabel)
+        view.addSubview(shapeView)
+        shapeView.addSubview(timerLabel)
+        view.addSubview(startButton)
+        view.addSubview(changeButton)
+    }
+    
+    func setupAutoloyaut() {
+        lessonLabel.translatesAutoresizingMaskIntoConstraints = false
+        timerLabel.translatesAutoresizingMaskIntoConstraints = false
+        shapeView.translatesAutoresizingMaskIntoConstraints = false
+        startButton.translatesAutoresizingMaskIntoConstraints = false
+        changeButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            lessonLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Const.lessonLabelTopAnchor),
+            lessonLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            lessonLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Const.lessonLabelLeftAnchor),
+            
+            shapeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            shapeView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            shapeView.heightAnchor.constraint(equalToConstant: Const.shapeSize),
+            shapeView.widthAnchor.constraint(equalToConstant: Const.shapeSize),
+            
+            timerLabel.centerXAnchor.constraint(equalTo: shapeView.centerXAnchor),
+            timerLabel.centerYAnchor.constraint(equalTo: shapeView.centerYAnchor),
+            
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Const.startButtonBottomAnchor),
+            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            startButton.heightAnchor.constraint(equalToConstant: Const.startButtonHeight),
+            startButton.widthAnchor.constraint(equalToConstant: Const.startButtonWidth),
+            
+            changeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Const.changeButtonBottomAnchor),
+            changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            changeButton.heightAnchor.constraint(equalToConstant: Const.changeButtonHeight),
+            changeButton.widthAnchor.constraint(equalToConstant: Const.changeButtonWidth)
+        ])
+    }
+    
+    func setupStyle() {
+        changeButton.layer.cornerRadius = Const.ButtonRadius
+        changeButton.setTitle(Const.changeButtonTitle, for: .normal)
+        changeButton.backgroundColor = .black
+        
+        startButton.layer.cornerRadius = Const.ButtonRadius
+        startButton.setTitle(Const.startButtonTitle, for: .normal)
+        startButton.backgroundColor = .black
+        
+        shapeView.image = UIImage(named: Const.shapeViewImageName)
+        shapeView.layer.cornerRadius = Const.shapeViewCornerRadius
+        shapeView.layer.shadowRadius = Const.shapeViewShadowRadius
+        
+        timerLabel.text = Const.timerLabelText
+        timerLabel.font = UIFont.boldSystemFont(ofSize: Const.timerLabelFontSize)
+        timerLabel.textColor = .black
+        timerLabel.numberOfLines = Const.labelLines
+        timerLabel.textAlignment = .center
+        
+        lessonLabel.text = Const.lessonLabelText
+        lessonLabel.font = UIFont.boldSystemFont(ofSize: Const.lessonLabelFintSize)
+        lessonLabel.textColor = .black
+        lessonLabel.numberOfLines = Const.labelLines
+        lessonLabel.textAlignment = .center
+    }
+    
+    func setupAction() {
+        nameObservationToken = observe(\ViewController.durationTimer, options: [.new]) { object, change in
             guard let updateName = change.newValue else { return }
-            strongself.timerLabel.text = String(updateName)
-            strongself.lessonLabel.text = String(updateName)
-            switch self.timerLabel.text {
-            case String(1):
-                self.timerLabel.textColor = self.colors.shuffled().first
-                self.lessonLabel.textColor = self.colors.shuffled().first
-            default :
-                self.timerLabel.textColor = self.colors.shuffled().first
-                self.lessonLabel.textColor = self.colors.shuffled().first
-            }
+            object.timerLabel.text = String(updateName)
+            object.lessonLabel.text = String(updateName)
+            self.timerLabel.textColor = self.colors.shuffled().first
+            self.lessonLabel.textColor = self.colors.shuffled().first
         }
         startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         changeButton.addTarget(self, action: #selector(changeButtonTapped), for: .touchUpInside)
@@ -84,7 +103,7 @@ class ViewController: UIViewController {
     @objc func changeButtonTapped() {
         durationTimer += 10
     }
-
+    
     @objc func startButtonTapped() {
         basicAnimation()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
@@ -99,7 +118,7 @@ class ViewController: UIViewController {
     }
     
     //MARK: Animation
-    func animationCircular() {
+    private func animationCircular() {
         let center = CGPoint(x: shapeView.frame.width / 2, y: shapeView.frame.height / 2)
         let endAngle = (-CGFloat.pi / 2)
         let startAngle = 2 * CGFloat.pi + endAngle
@@ -114,54 +133,12 @@ class ViewController: UIViewController {
         shapeView.layer.addSublayer(shapeLayer)
     }
     
-    func basicAnimation() {
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+    private func basicAnimation() {
+        let basicAnimation = CABasicAnimation(keyPath: Const.animationKeyPath)
         basicAnimation.toValue = 0
         basicAnimation.duration = CFTimeInterval(durationTimer)
         basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         basicAnimation.isRemovedOnCompletion = true
-        shapeLayer.add(basicAnimation, forKey: "basicAnimation")
+        shapeLayer.add(basicAnimation, forKey: Const.shapeLayerAnimationRoad)
     }
 }
-
-extension ViewController {
-    func setConstraints() {
-        view.addSubview(lessonLabel)
-        NSLayoutConstraint.activate([
-            lessonLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: -500),
-            lessonLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            lessonLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-        ])
-        
-        view.addSubview(shapeView)
-        NSLayoutConstraint.activate([
-            shapeView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            shapeView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            shapeView.heightAnchor.constraint(equalToConstant: 300),
-            shapeView.widthAnchor.constraint(equalToConstant: 300)
-        ])
-        
-        shapeView.addSubview(timerLabel)
-        NSLayoutConstraint.activate([
-            timerLabel.centerXAnchor.constraint(equalTo: shapeView.centerXAnchor),
-            timerLabel.centerYAnchor.constraint(equalTo: shapeView.centerYAnchor),
-        ])
-        
-        view.addSubview(startButton)
-        NSLayoutConstraint.activate([
-            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.heightAnchor.constraint(equalToConstant: 70),
-            startButton.widthAnchor.constraint(equalToConstant: 300)
-        ])
-        
-        view.addSubview(changeButton)
-        NSLayoutConstraint.activate([
-            changeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
-            changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            changeButton.heightAnchor.constraint(equalToConstant: 50),
-            changeButton.widthAnchor.constraint(equalToConstant: 200)
-        ])
-    }
-}
-
