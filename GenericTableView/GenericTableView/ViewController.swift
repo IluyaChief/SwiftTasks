@@ -85,4 +85,3 @@ struct SectionName: Hashable {
                               SectionName(name: Const.thirtyCell)
     ]
 }
-//Mark
