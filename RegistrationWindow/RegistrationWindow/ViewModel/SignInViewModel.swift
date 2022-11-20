@@ -8,7 +8,7 @@
 import UIKit
 
 enum SubmitAction {
-    case pushToFinalPage
+    case pushToRegistrationPage
 }
 
 class SignInViewModel {
@@ -16,6 +16,7 @@ class SignInViewModel {
     var signInActionCallback: SignInActionCallback?
     var model: UserModel?
     var comparisonCallback: ((Bool?) -> Void)?
+
     
     init(model: UserModel, signInActionCallback: @escaping SignInActionCallback) {
         self.model = model
@@ -24,7 +25,7 @@ class SignInViewModel {
     
     func accept(login: String, password: String) {
         if login == model?.name && password == model?.password {
-            signInActionCallback?(.pushToFinalPage)
+            signInActionCallback?(.pushToRegistrationPage)
             comparisonCallback?(true)
         } else {
             comparisonCallback?(false)

@@ -14,31 +14,29 @@ class AppCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
+    func startSignInPage() {
         let model = UserModel()
         let viewModel = SignInViewModel(model: model, signInActionCallback: { [weak self] action in
             switch action {
-            case.pushToFinalPage:
+            case.pushToRegistrationPage:
                 self?.showInput()
             }
         })
         let vc = SignInViewController(viewModel: viewModel)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
-        navigationController.navigationBar.barTintColor = .blue
-        navigationController.navigationBar.tintColor = .black
     }
     
-    func showLogin() {
+    func showSignUpPage() {
         let model = UserModel()
         let viewModel = RegistrationViewModel(model: model)
-        let vc = RegistController(viewModel: viewModel)
+        let vc = SignUpViewController(viewModel: viewModel)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
     
     func showInput() {
-        let model = UserModel()
+        let model = WeatherModel()
         let viewMidel = WeatherViewModel(model: model)
         let vc = WeatherViewController(viewModel: viewMidel)
         vc.coordinator = self

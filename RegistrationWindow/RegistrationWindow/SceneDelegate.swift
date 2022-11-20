@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let navController = UINavigationController()
         coordinator = AppCoordinator(navigationController: navController)
-        coordinator?.start()
+        coordinator?.startSignInPage()
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }

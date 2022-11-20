@@ -1,8 +1,10 @@
 import UIKit
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, ControlSetupProtocol {
     private let greetingsLabel = UILabel()
-    var viewModel: WeatherViewModel?
+    private let weaterImage = UIImage(named: Const.weatherPageImage)
+    private let imageView = UIImageView()
+    private var viewModel: WeatherViewModel?
     var coordinator: AppCoordinator?
     
     init(viewModel: WeatherViewModel) {
@@ -15,27 +17,38 @@ class WeatherViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        setupSubview()
-        setupAutoLoyaut()
-        setupStyle()
+        setup()
+        setupNavBar()
+}
+    
+    func setupNavBar() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    private func setupAutoLoyaut() {
+     func setupAutoLoyaut() {
         greetingsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            greetingsLabel.topAnchor.constraint(equalTo: view.topAnchor,constant: 200),
-            greetingsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 60),
-            greetingsLabel.widthAnchor.constraint(equalToConstant: 400),
-            greetingsLabel.heightAnchor.constraint(equalToConstant: 60)
+            imageView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            imageView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            
+            greetingsLabel.topAnchor.constraint(equalTo: imageView.topAnchor,constant: Const.textfieldWidthAnchor),
+            greetingsLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor, constant: Const.greetingsLabelLeftAnchor),
+            greetingsLabel.widthAnchor.constraint(equalToConstant: Const.greetingsLabelwidthAnchor),
+            greetingsLabel.heightAnchor.constraint(equalToConstant: Const.greetingsLabelLeftAnchor)
         ])
     }
     
-    private func setupSubview() {
-        view.addSubview(greetingsLabel)
+     func setupSubview() {
+        view.addSubviewAndDisableAutoResizing([imageView,
+                                                greetingsLabel])
+
     }
     
-    private func setupStyle() {
-        greetingsLabel.text = "you are inside"
+     func setupStyle() {
+        imageView.image = weaterImage
+        
+        greetingsLabel.text = Const.greetingsLabelText
         greetingsLabel.font = UIFont.systemFont(ofSize: 50)
         greetingsLabel.textColor = .yellow
         greetingsLabel.alpha = 0
@@ -46,8 +59,7 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    func setupAction() {
+        
     }
-
 }

@@ -25,7 +25,7 @@ struct UserModel: UserModelProtocol {
             UserModel.set(text: SettingsKeys.password, value: newValue)
         }
     }
-    private static func set(text: SettingsKeys, value: String?) {
+     static func set(text: SettingsKeys, value: String?) {
         let defaults = UserDefaults.standard
         let key = text.rawValue
         if let newValue = value {

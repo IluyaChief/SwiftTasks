@@ -13,14 +13,18 @@
 		045726C128CE269C004A8122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045726BF28CE269C004A8122 /* Main.storyboard */; };
 		045726C328CE26A1004A8122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045726C228CE26A1004A8122 /* Assets.xcassets */; };
 		045726C628CE26A1004A8122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045726C428CE26A1004A8122 /* LaunchScreen.storyboard */; };
-		045726CE28CE279E004A8122 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045726CD28CE279E004A8122 /* RegistrationController.swift */; };
+		045726CE28CE279E004A8122 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045726CD28CE279E004A8122 /* SignUpViewController.swift */; };
 		045726D228CE27E3004A8122 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045726D128CE27E3004A8122 /* UserModel.swift */; };
 		045726D428CE280C004A8122 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045726D328CE280C004A8122 /* WeatherViewController.swift */; };
 		04ED7D23290E4271004C3EE2 /* Coordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D22290E4271004C3EE2 /* Coordinators.swift */; };
 		04ED7D25290E42B0004C3EE2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D24290E42B0004C3EE2 /* AppCoordinator.swift */; };
-		04ED7D29290E4423004C3EE2 /* VIewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D28290E4423004C3EE2 /* VIewControllerViewModel.swift */; };
+		04ED7D29290E4423004C3EE2 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D28290E4423004C3EE2 /* SignInViewModel.swift */; };
 		04ED7D2B290E4439004C3EE2 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D2A290E4439004C3EE2 /* RegistrationViewModel.swift */; };
 		04ED7D2D290E4455004C3EE2 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D2C290E4455004C3EE2 /* WeatherViewModel.swift */; };
+		04ED7D3429196AEA004C3EE2 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D3329196AEA004C3EE2 /* WeatherModel.swift */; };
+		04ED7D3629197171004C3EE2 /* ControlSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D3529197171004C3EE2 /* ControlSetupProtocol.swift */; };
+		04ED7D38291D1F70004C3EE2 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D37291D1F70004C3EE2 /* Const.swift */; };
+		04ED7D3A29216FB8004C3EE2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D3929216FB8004C3EE2 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,14 +36,18 @@
 		045726C228CE26A1004A8122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045726C528CE26A1004A8122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		045726C728CE26A1004A8122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		045726CD28CE279E004A8122 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		045726CD28CE279E004A8122 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		045726D128CE27E3004A8122 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		045726D328CE280C004A8122 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		04ED7D22290E4271004C3EE2 /* Coordinators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinators.swift; sourceTree = "<group>"; };
 		04ED7D24290E42B0004C3EE2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		04ED7D28290E4423004C3EE2 /* VIewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIewControllerViewModel.swift; sourceTree = "<group>"; };
+		04ED7D28290E4423004C3EE2 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		04ED7D2A290E4439004C3EE2 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		04ED7D2C290E4455004C3EE2 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		04ED7D3329196AEA004C3EE2 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		04ED7D3529197171004C3EE2 /* ControlSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSetupProtocol.swift; sourceTree = "<group>"; };
+		04ED7D37291D1F70004C3EE2 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		04ED7D3929216FB8004C3EE2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,8 @@
 				045726C228CE26A1004A8122 /* Assets.xcassets */,
 				045726C428CE26A1004A8122 /* LaunchScreen.storyboard */,
 				045726C728CE26A1004A8122 /* Info.plist */,
+				04ED7D37291D1F70004C3EE2 /* Const.swift */,
+				04ED7D3929216FB8004C3EE2 /* Extensions.swift */,
 			);
 			path = RegistrationWindow;
 			sourceTree = "<group>";
@@ -99,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				04ED7D22290E4271004C3EE2 /* Coordinators.swift */,
+				04ED7D3529197171004C3EE2 /* ControlSetupProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -107,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				045726BD28CE269C004A8122 /* SignInViewController.swift */,
-				045726CD28CE279E004A8122 /* RegistrationController.swift */,
+				045726CD28CE279E004A8122 /* SignUpViewController.swift */,
 				045726D328CE280C004A8122 /* WeatherViewController.swift */,
 			);
 			path = VIew;
@@ -116,7 +127,7 @@
 		04ED7D27290E43F0004C3EE2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				04ED7D28290E4423004C3EE2 /* VIewControllerViewModel.swift */,
+				04ED7D28290E4423004C3EE2 /* SignInViewModel.swift */,
 				04ED7D2A290E4439004C3EE2 /* RegistrationViewModel.swift */,
 				04ED7D2C290E4455004C3EE2 /* WeatherViewModel.swift */,
 			);
@@ -127,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				045726D128CE27E3004A8122 /* UserModel.swift */,
+				04ED7D3329196AEA004C3EE2 /* WeatherModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,10 +220,14 @@
 				04ED7D2D290E4455004C3EE2 /* WeatherViewModel.swift in Sources */,
 				04ED7D25290E42B0004C3EE2 /* AppCoordinator.swift in Sources */,
 				04ED7D2B290E4439004C3EE2 /* RegistrationViewModel.swift in Sources */,
-				045726CE28CE279E004A8122 /* RegistrationController.swift in Sources */,
-				04ED7D29290E4423004C3EE2 /* VIewControllerViewModel.swift in Sources */,
+				045726CE28CE279E004A8122 /* SignUpViewController.swift in Sources */,
+				04ED7D29290E4423004C3EE2 /* SignInViewModel.swift in Sources */,
 				045726D228CE27E3004A8122 /* UserModel.swift in Sources */,
+				04ED7D3A29216FB8004C3EE2 /* Extensions.swift in Sources */,
+				04ED7D3629197171004C3EE2 /* ControlSetupProtocol.swift in Sources */,
+				04ED7D3429196AEA004C3EE2 /* WeatherModel.swift in Sources */,
 				045726BC28CE269C004A8122 /* SceneDelegate.swift in Sources */,
+				04ED7D38291D1F70004C3EE2 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

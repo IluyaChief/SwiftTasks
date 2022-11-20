@@ -7,9 +7,9 @@
 
 import UIKit
 class WeatherViewModel {
-    var model: UserModel?
+    var model: WeatherModel?
     
-    init(model: UserModel) {
+    init(model: WeatherModel) {
         self.model = model
     }
     
