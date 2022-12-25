@@ -18,7 +18,7 @@ class AppCoordinator: Coordinator {
         let model = UserModel()
         let viewModel = SignInViewModel(model: model, signInActionCallback: { [weak self] action in
             switch action {
-            case.pushToRegistrationPage:
+            case.pushToWeatherPage:
                 self?.showInput()
             }
         })
@@ -29,7 +29,7 @@ class AppCoordinator: Coordinator {
     
     func showSignUpPage() {
         let model = UserModel()
-        let viewModel = RegistrationViewModel(model: model)
+        let viewModel = SignOutViewModel(model: model)
         let vc = SignUpViewController(viewModel: viewModel)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)

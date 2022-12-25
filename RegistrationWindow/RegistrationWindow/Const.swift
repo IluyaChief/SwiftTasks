@@ -7,7 +7,7 @@
 
 import UIKit
 enum Const {
-    static let textfieldNameTopAnchor: CGFloat = -50
+    static let textfieldNameTopAnchor: CGFloat = -450
     static let textfieldNamerightAnchor: CGFloat = -100
     static let textfieldWidthAnchor: CGFloat = 200
     static let textfieldHeightAnchor: CGFloat = 40
@@ -22,7 +22,7 @@ enum Const {
     static let acceptButtonWidth: CGFloat = 100
     static let acceptButtonHeight: CGFloat = 30
     static let acceptButtonRightAnchort: CGFloat = -50
-    static let acceptButtontopAnchor: CGFloat = 130
+    static let acceptButtontopAnchor: CGFloat = 100
     static let loginButtonWidth: CGFloat = 100
     static let logginButtonHeight: CGFloat = 30
     static let logginButtontopAnchort: CGFloat = 160
@@ -31,7 +31,7 @@ enum Const {
     static let acceptLabelLeftAnchor: CGFloat = 45
     static let acceptLabelHeight: CGFloat = 30
     static let acceptLabelWidth: CGFloat = 150
-    static let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
+    static let buttonTopConstant:CGFloat = 20
     static let acceptButtonSetTitle = "Save"
     static let infoLabelText = "Registration"
     static let textfieldNamePlaceholder = "Create name"
@@ -43,10 +43,12 @@ enum Const {
     static let logginButtonSetTitle = "OK"
     static let acceptLabelText = "Wrong data"
     static let backButtonSetTitle = "Back"
+    static let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$"
     static let uiFont = "Arial"
     static let allertTitle = "Press word"
     static let allertMassage = "Use more the necessary symbols"
     static let allertActionTitle = "OK"
+    static let allertmassage = "Set right char"
     static let weatherSignUpImage = "weatherSignUp"
     static let weatherSignInImage = "weatherSignIn"
     static let weatherPageImage = "weatherPage"

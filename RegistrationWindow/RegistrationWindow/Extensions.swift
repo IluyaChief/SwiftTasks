@@ -14,15 +14,26 @@ extension UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
         })
     }
-}
-
-extension UITextField {
-    func isValid(word: String) -> String? {
-        let regularExpression = "[A-Z0-9a-z._%+-]+@[A-Za=z0-9.-]+\\.[A-Za-z]{2,64}"
-        let predicate = NSPredicate(format: "Self Mathes %@",regularExpression)
-        if !predicate.evaluate(with: word) {
-         return "invalid"
-        }
-        return nil
+    
+    func pinToEdges(view: UIView,
+                    topConst: CGFloat,
+                    rightConst: CGFloat,
+                    heightConst: CGFloat,
+                    widthConst: CGFloat) {
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: view.bottomAnchor, constant: topConst),
+            rightAnchor.constraint(equalTo: view.rightAnchor, constant: rightConst),
+            heightAnchor.constraint(equalToConstant: heightConst),
+            widthAnchor.constraint(equalToConstant: widthConst)
+])
+    }
+    
+    func pin(height: CGFloat, width: CGFloat) {
+        NSLayoutConstraint.activate([
+            heightAnchor.constraint(equalToConstant: height),
+            widthAnchor.constraint(equalToConstant: width)
+        ])
     }
 }
+
+

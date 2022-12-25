@@ -19,7 +19,7 @@
 		04ED7D23290E4271004C3EE2 /* Coordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D22290E4271004C3EE2 /* Coordinators.swift */; };
 		04ED7D25290E42B0004C3EE2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D24290E42B0004C3EE2 /* AppCoordinator.swift */; };
 		04ED7D29290E4423004C3EE2 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D28290E4423004C3EE2 /* SignInViewModel.swift */; };
-		04ED7D2B290E4439004C3EE2 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D2A290E4439004C3EE2 /* RegistrationViewModel.swift */; };
+		04ED7D2B290E4439004C3EE2 /* SignOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D2A290E4439004C3EE2 /* SignOutViewModel.swift */; };
 		04ED7D2D290E4455004C3EE2 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D2C290E4455004C3EE2 /* WeatherViewModel.swift */; };
 		04ED7D3429196AEA004C3EE2 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D3329196AEA004C3EE2 /* WeatherModel.swift */; };
 		04ED7D3629197171004C3EE2 /* ControlSetupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED7D3529197171004C3EE2 /* ControlSetupProtocol.swift */; };
@@ -42,7 +42,7 @@
 		04ED7D22290E4271004C3EE2 /* Coordinators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinators.swift; sourceTree = "<group>"; };
 		04ED7D24290E42B0004C3EE2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		04ED7D28290E4423004C3EE2 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		04ED7D2A290E4439004C3EE2 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		04ED7D2A290E4439004C3EE2 /* SignOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutViewModel.swift; sourceTree = "<group>"; };
 		04ED7D2C290E4455004C3EE2 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		04ED7D3329196AEA004C3EE2 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		04ED7D3529197171004C3EE2 /* ControlSetupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSetupProtocol.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				04ED7D28290E4423004C3EE2 /* SignInViewModel.swift */,
-				04ED7D2A290E4439004C3EE2 /* RegistrationViewModel.swift */,
+				04ED7D2A290E4439004C3EE2 /* SignOutViewModel.swift */,
 				04ED7D2C290E4455004C3EE2 /* WeatherViewModel.swift */,
 			);
 			path = ViewModel;
@@ -219,7 +219,7 @@
 				045726BA28CE269C004A8122 /* AppDelegate.swift in Sources */,
 				04ED7D2D290E4455004C3EE2 /* WeatherViewModel.swift in Sources */,
 				04ED7D25290E42B0004C3EE2 /* AppCoordinator.swift in Sources */,
-				04ED7D2B290E4439004C3EE2 /* RegistrationViewModel.swift in Sources */,
+				04ED7D2B290E4439004C3EE2 /* SignOutViewModel.swift in Sources */,
 				045726CE28CE279E004A8122 /* SignUpViewController.swift in Sources */,
 				04ED7D29290E4423004C3EE2 /* SignInViewModel.swift in Sources */,
 				045726D228CE27E3004A8122 /* UserModel.swift in Sources */,

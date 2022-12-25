@@ -8,10 +8,10 @@ class SignUpViewController: UIViewController, ControlSetupProtocol {
     private var signUpImage = UIImage(named: Const.weatherSignUpImage)
     private var imageView = UIImageView()
     private var backButton = UIButton()
-    private var viewModel: RegistrationViewModel?
+    private var viewModel: SignOutViewModel?
     var coordinator: Coordinator?
     
-    init(viewModel: RegistrationViewModel) {
+    init(viewModel: SignOutViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,36 +32,36 @@ class SignUpViewController: UIViewController, ControlSetupProtocol {
     
     func setupAutoLoyaut() {
         NSLayoutConstraint.activate([
-            imageView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor),
             imageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            textfieldName.topAnchor.constraint(equalTo:imageView.centerYAnchor,constant: Const.textfieldNameTopAnchor),
-            textfieldName.rightAnchor.constraint(equalTo: imageView.rightAnchor,constant: Const.textfieldNamerightAnchor),
-            textfieldName.widthAnchor.constraint(equalToConstant: Const.textfieldWidthAnchor),
-            textfieldName.heightAnchor.constraint(equalToConstant: Const.textfieldHeightAnchor),
-            
-            textfieldPassword.heightAnchor.constraint(equalToConstant: Const.textfieldHeightAnchor),
-            textfieldPassword.widthAnchor.constraint(equalToConstant: Const.textfieldWidthAnchor),
-            textfieldPassword.topAnchor.constraint(equalTo: textfieldName.bottomAnchor, constant: Const.textfieldPasswordTopAnchor),
-            textfieldPassword.rightAnchor.constraint(equalTo: textfieldName.rightAnchor),
-            
-            infoLabel.heightAnchor.constraint(equalToConstant: Const.infoLabelHeight),
-            infoLabel.widthAnchor.constraint(equalToConstant: Const.infoLabelWidth),
-            infoLabel.topAnchor.constraint(equalTo: textfieldName.bottomAnchor, constant: Const.infoLabelBottomAnchor),
-            infoLabel.leftAnchor.constraint(equalTo: textfieldName.leftAnchor),
-            
-            acceptButton.widthAnchor.constraint(equalToConstant: Const.acceptButtonWidth),
-            acceptButton.heightAnchor.constraint(equalToConstant: Const.acceptButtonHeight),
-            acceptButton.topAnchor.constraint(equalTo: textfieldName.topAnchor, constant: Const.acceptButtontopAnchor),
-            acceptButton.rightAnchor.constraint(equalTo: textfieldName.rightAnchor,constant: Const.acceptButtonRightAnchort),
-            
-            backButton.leftAnchor.constraint(equalTo: acceptButton.leftAnchor),
-            backButton.topAnchor.constraint(lessThanOrEqualTo: acceptButton.bottomAnchor),
-            backButton.widthAnchor.constraint(equalToConstant: Const.acceptButtonWidth),
-            backButton.heightAnchor.constraint(equalToConstant: Const.acceptButtonHeight)
         ])
+        textfieldName.pinToEdges(view: imageView,
+                                 topConst: Const.textfieldNameTopAnchor,
+                                 rightConst: Const.textfieldNamerightAnchor,
+                                 heightConst: Const.textfieldHeightAnchor,
+                                 widthConst: Const.textfieldWidthAnchor)
+        textfieldPassword.pinToEdges(view: textfieldName,
+                                     topConst: Const.textfieldPasswordTopAnchor,
+                                     rightConst: 0,
+                                     heightConst: Const.textfieldHeightAnchor,
+                                     widthConst: Const.textfieldWidthAnchor)
+        infoLabel.pinToEdges(view: textfieldName,
+                             topConst: Const.infoLabelBottomAnchor,
+                             rightConst: 200,
+                             heightConst: Const.infoLabelHeight,
+                             widthConst: Const.infoLabelWidth)
+        acceptButton.pinToEdges(view: textfieldName,
+                                topConst: Const.acceptButtontopAnchor,
+                                rightConst: Const.acceptButtonRightAnchort,
+                                heightConst: Const.acceptButtonHeight,
+                                widthConst: Const.acceptButtonWidth)
+        backButton.pinToEdges(view: acceptButton,
+                              topConst: Const.buttonTopConstant,
+                              rightConst: 0,
+                              heightConst: Const.acceptButtonHeight,
+                              widthConst: Const.acceptButtonWidth)
     }
     
     func setupSubview() {
@@ -77,12 +77,11 @@ class SignUpViewController: UIViewController, ControlSetupProtocol {
     func setupStyle() {
         imageView.image = signUpImage
         
-        
         backButton.titleLabel?.font = UIFont(name: Const.uiFont, size: 20)
         backButton.setTitle(Const.backButtonSetTitle, for: .normal)
-        backButton.setTitleColor(.yellow, for: .normal)
-        backButton.backgroundColor = .none
-        backButton.layer.cornerRadius = 15
+        backButton.setTitleColor(.black, for: .normal)
+        backButton.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        backButton.layer.cornerRadius = 10
         
         textfieldName.borderStyle = UITextField.BorderStyle.bezel
         textfieldName.placeholder = Const.textfieldNamePlaceholder
@@ -91,7 +90,6 @@ class SignUpViewController: UIViewController, ControlSetupProtocol {
         textfieldName.layer.masksToBounds = true
         textfieldName.layer.cornerRadius = 10
         
-        
         textfieldPassword.borderStyle = UITextField.BorderStyle.bezel
         textfieldPassword.placeholder = Const.textfieldPasswordPlaceholder
         textfieldPassword.backgroundColor = UIColor.white
@@ -99,15 +97,15 @@ class SignUpViewController: UIViewController, ControlSetupProtocol {
         textfieldPassword.layer.masksToBounds = true
         textfieldPassword.layer.cornerRadius = 10
         
-        
         infoLabel.textColor = .yellow
         infoLabel.font = UIFont.systemFont(ofSize: 40)
         infoLabel.text = Const.infoLabelText
         
         acceptButton.titleLabel?.font = UIFont(name: Const.uiFont, size: 20)
         acceptButton.setTitle(Const.acceptButtonSetTitle, for: .normal)
-        acceptButton.setTitleColor(.yellow, for: .normal)
-        acceptButton.backgroundColor = .none
+        acceptButton.setTitleColor(.black, for: .normal)
+        acceptButton.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        acceptButton.layer.cornerRadius = 9
     }
     
     func setupAction() {
@@ -142,10 +140,14 @@ class SignUpViewController: UIViewController, ControlSetupProtocol {
         let nameText = textfieldName.text?.trimmingCharacters(in: .whitespaces)
         let passwordText = textfieldPassword.text?.trimmingCharacters(in: .whitespaces)
         guard let name =  textfieldName.text else { return }
-        if isValid(word: name) == false {
-            let allert = UIAlertController(title: Const.allertTitle, message: Const.allertMassage, preferredStyle: UIAlertController.Style.alert)
-            allert.addAction(UIAlertAction(title: Const.allertActionTitle, style: UIAlertAction.Style.default, handler: nil))
-            present(allert, animated: true, completion: nil)
+        if !isValid(word: name) {
+            let alert = UIAlertController(title: Const.allertTitle,
+                                          message: Const.allertMassage,
+                                          preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: Const.allertActionTitle,
+                                          style: UIAlertAction.Style.default,
+                                          handler: nil))
+            present(alert, animated: true, completion: nil)
         } else {
             viewModel?.name = nameText
             viewModel?.password = passwordText

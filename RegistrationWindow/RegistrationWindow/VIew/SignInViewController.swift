@@ -6,10 +6,8 @@ class SignInViewController: UIViewController, ControlSetupProtocol {
     private var infoLabel = UILabel()
     private var registButton = UIButton()
     private var loginButton = UIButton()
-    private var acceptLabel = UILabel()
     private var logInImage = UIImage(named: Const.weatherSignInImage)
     private var imageView = UIImageView()
-    let defaults = UserDefaults.standard
 
     
     private var viewModel: SignInViewModel?
@@ -35,41 +33,36 @@ class SignInViewController: UIViewController, ControlSetupProtocol {
     }
     func setupAutoLoyaut() {
         NSLayoutConstraint.activate([
-            imageView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            imageView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            imageView.topAnchor.constraint(equalTo: view.topAnchor),
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor),
             imageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            
-            textfieldName.topAnchor.constraint(equalTo:imageView.centerYAnchor,constant: Const.textfieldNameTopAnchor),
-            textfieldName.rightAnchor.constraint(equalTo: imageView.rightAnchor,constant: Const.textfieldNamerightAnchor),
-            textfieldName.widthAnchor.constraint(equalToConstant: Const.textfieldWidthAnchor),
-            textfieldName.heightAnchor.constraint(equalToConstant: Const.textfieldHeightAnchor),
-            
-            textfieldPassword.heightAnchor.constraint(equalToConstant: Const.textfieldHeightAnchor),
-            textfieldPassword.widthAnchor.constraint(equalToConstant: Const.textfieldWidthAnchor),
-            textfieldPassword.topAnchor.constraint(equalTo: textfieldName.bottomAnchor, constant: Const.textfieldPasswordTopAnchor),
-            textfieldPassword.rightAnchor.constraint(equalTo: textfieldName.rightAnchor),
-            
-            infoLabel.heightAnchor.constraint(equalToConstant: Const.infoLabelHeight),
-            infoLabel.widthAnchor.constraint(equalToConstant: Const.infoLabelWidth),
-            infoLabel.topAnchor.constraint(equalTo: textfieldName.bottomAnchor, constant: Const.infoLabelBottomAnchor),
-            infoLabel.leftAnchor.constraint(equalTo: imageView.leftAnchor,constant: Const.infoLabelLeftAnchor),
-            
-            registButton.widthAnchor.constraint(equalToConstant: Const.acceptButtonWidth),
-            registButton.heightAnchor.constraint(equalToConstant: Const.acceptButtonHeight),
-            registButton.topAnchor.constraint(equalTo: textfieldName.topAnchor, constant: Const.acceptButtontopAnchor),
-            registButton.rightAnchor.constraint(equalTo: textfieldName.rightAnchor,constant: Const.acceptButtonRightAnchort),
-            
-            loginButton.widthAnchor.constraint(equalToConstant: Const.loginButtonWidth),
-            loginButton.heightAnchor.constraint(equalToConstant: Const.logginButtonHeight),
-            loginButton.topAnchor.constraint(equalTo: textfieldName.topAnchor, constant: Const.logginButtontopAnchort),
-            loginButton.rightAnchor.constraint(equalTo: textfieldName.rightAnchor,constant: Const.logginButtonRightAnchor),
-            
-            acceptLabel.bottomAnchor.constraint(equalTo: registButton.bottomAnchor, constant: Const.acceptLabelBottomAnchor),
-            acceptLabel.leftAnchor.constraint(equalTo: textfieldName.leftAnchor,constant: Const.acceptLabelLeftAnchor),
-            acceptLabel.heightAnchor.constraint(equalToConstant: Const.acceptLabelHeight),
-            acceptLabel.widthAnchor.constraint(equalToConstant: Const.acceptLabelWidth)
         ])
+        textfieldName.pinToEdges(view: imageView,
+                                 topConst: Const.textfieldNameTopAnchor,
+                                 rightConst: Const.textfieldNamerightAnchor,
+                                 heightConst: Const.textfieldHeightAnchor,
+                                 widthConst: Const.textfieldWidthAnchor)
+        textfieldPassword.pinToEdges(view: textfieldName,
+                                     topConst: Const.textfieldPasswordTopAnchor,
+                                     rightConst: 0,
+                                     heightConst: Const.textfieldHeightAnchor,
+                                     widthConst: Const.textfieldWidthAnchor)
+        infoLabel.pinToEdges(view: textfieldName,
+                             topConst: Const.infoLabelBottomAnchor,
+                             rightConst: 140,
+                             heightConst: Const.infoLabelHeight,
+                             widthConst: Const.infoLabelWidth)
+        registButton.pinToEdges(view: textfieldName,
+                                topConst: Const.acceptButtontopAnchor,
+                                rightConst: Const.acceptButtonRightAnchort,
+                                heightConst: Const.acceptButtonHeight,
+                                widthConst: Const.acceptButtonWidth)
+        loginButton.pinToEdges(view: registButton,
+                              topConst: Const.buttonTopConstant,
+                              rightConst: 0,
+                              heightConst: Const.acceptButtonHeight,
+                              widthConst: Const.acceptButtonWidth)
     }
     
     func setupSubview() {
@@ -78,14 +71,12 @@ class SignInViewController: UIViewController, ControlSetupProtocol {
                                                textfieldPassword,
                                                infoLabel,
                                                registButton,
-                                               loginButton,
-                                               acceptLabel])
+                                               loginButton])
         
     }
     func setupStyle() {
         imageView.image = logInImage
         
-        textfieldName.text = UserDefaults.standard.string(forKey: "userRefreshName")
         textfieldName.borderStyle = UITextField.BorderStyle.bezel
         textfieldName.placeholder = Const.registTextFieldName
         textfieldName.backgroundColor = UIColor.white
@@ -93,7 +84,6 @@ class SignInViewController: UIViewController, ControlSetupProtocol {
         textfieldName.layer.masksToBounds = true
         textfieldName.layer.cornerRadius = 10
         
-        textfieldPassword.text = UserDefaults.standard.string(forKey: "userRefreshPassword")
         textfieldPassword.borderStyle = UITextField.BorderStyle.bezel
         textfieldPassword.placeholder = Const.registTextFieldPassword
         textfieldPassword.backgroundColor = UIColor.white
@@ -105,24 +95,18 @@ class SignInViewController: UIViewController, ControlSetupProtocol {
         infoLabel.font = UIFont.systemFont(ofSize: 30)
         infoLabel.text = Const.registInfoLabelText
         
-        registButton.backgroundColor = .none
+        registButton.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         registButton.setTitle(Const.registSetTitle, for: .normal)
-        registButton.setTitleColor(.yellow, for: .normal)
+        registButton.setTitleColor(.black, for: .normal)
+        registButton.layer.cornerRadius = 10
         
         loginButton.setTitle(Const.logginButtonSetTitle, for: .normal)
-        loginButton.setTitleColor(.yellow, for: .normal)
-        loginButton.backgroundColor = .none
-        
-        acceptLabel.textColor = .red
-        acceptLabel.isHidden = true
-        acceptLabel.font = UIFont.systemFont(ofSize: 20)
-        acceptLabel.text = Const.acceptLabelText
-        
+        loginButton.setTitleColor(.black, for: .normal)
+        loginButton.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        loginButton.layer.cornerRadius = 10
     }
     
     func setupAction() {
-        textfieldName.addTarget(self, action: #selector(hideKeyboard), for: .editingChanged)
-        textfieldPassword.addTarget(self, action: #selector(passwordChanged), for: .editingChanged)
         textfieldPassword.addTarget(self, action: #selector(passwordChanged), for: .editingDidEndOnExit)
         textfieldName.addTarget(self, action: #selector(hideKeyboard), for: .editingDidEndOnExit)
         registButton.addTarget(self, action: #selector(tapRegist), for: .touchUpInside)
@@ -131,11 +115,9 @@ class SignInViewController: UIViewController, ControlSetupProtocol {
     
     
     @objc func hideKeyboard() {
-        defaults.setValue(textfieldName.text, forKey: "userRefreshName")
     }
     
     @objc func passwordChanged() {
-        defaults.setValue(textfieldPassword.text, forKey: "userRefreshPassword")
     }
     
     @objc func tapRegist() {
@@ -147,11 +129,15 @@ class SignInViewController: UIViewController, ControlSetupProtocol {
         viewModel?.accept(login: name , password: password)
         viewModel?.comparisonCallback = {equals in
             guard let equal = equals else { return }
-            self.acceptLabel.isHidden = equal
-        
+            if equal == false {
+                let allert = UIAlertController(title: Const.allertTitle,
+                                               message: Const.allertmassage,
+                                               preferredStyle: UIAlertController.Style.alert)
+                allert.addAction(UIAlertAction(title: Const.allertActionTitle, style: UIAlertAction.Style.default,
+                                               handler: nil))
+                self.present(allert, animated: true, completion: nil)
+            }
         }
-        defaults.setValue("", forKey: "userRefreshName")
-        defaults.setValue("", forKey: "userRefreshPassword")
     }
 }
 

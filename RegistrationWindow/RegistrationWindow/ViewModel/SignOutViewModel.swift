@@ -7,27 +7,25 @@
 
 import UIKit
 
-class RegistrationViewModel {
-    var model: UserModel?
-    var name: String? {
-        get {
-        return model?.name
-        } set {
-            UserModel.set(text: SettingsKeys.name, value: newValue)
-        }
-    }
-    var password: String? {
-        get {
-        return model?.password
-        } set {
-            UserModel.set(text: SettingsKeys.password, value: newValue)
-        }
-    }
-    
+class SignOutViewModel {
+    private let model: UserModel?
     init(model: UserModel) {
         self.model = model
     }
     
-    func validation() {
+    var name: String? {
+        get {
+            return model?.name
+        } set {
+            UserModel.set(text: SettingsKeys.name, value: newValue)
+        }
     }
-}
+    
+    var password: String? {
+        get {
+            return model?.password
+        } set {
+            UserModel.set(text: SettingsKeys.password, value: newValue)
+        }
+    }
+}	
